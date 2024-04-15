@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="1 seconds">
+
+    <contextName>logback</contextName>
+    <property name="log.path" value="/data/test.log"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}.%d{yyyy-MM-dd}.zip</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+        <!-- Graylog服务的地址 -->
+        <graylogHost>10.11.12.110</graylogHost>
+        <!-- UDP Input端口 -->
+        <graylogPort>12201</graylogPort>
+        <!-- 最大GELF数据块大小（单位：字节），508为建议最小值，最大值为65467 -->
+        <maxChunkSize>508</maxChunkSize>
+        <!-- 是否使用压缩 -->
+        <useCompression>true</useCompression>
+        <!--<encoder class="de.siegmar.logbackgelf.GelfEncoder">
+            &lt;!&ndash; 是否发送原生的日志信息 &ndash;&gt;
+            <includeRawMessage>false</includeRawMessage>
+            <includeMarker>true</includeMarker>
+            <includeMdcData>true</includeMdcData>
+            <includeCallerData>false</includeCallerData>
+            <includeRootCauseData>false</includeRootCauseData>
+            &lt;!&ndash; 是否发送日志级别的名称，否则默认以数字代表日志级别 &ndash;&gt;
+            <includeLevelName>true</includeLevelName>
+            <shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%m%nopex</pattern>
+            </shortPatternLayout>
+            <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%d - [%thread] %-5level %logger{35} - %msg%n</pattern>
+            </fullPatternLayout>
+            &lt;!&ndash; 配置应用名称（服务名称），通过staticField标签可以自定义一些固定的日志字段 &ndash;&gt;
+            <staticField>app_name:ops</staticField>
+        </encoder>-->
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+        <appender-ref ref="GELF"/>
+    </root>
+
+</configuration>

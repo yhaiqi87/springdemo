@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demomybatisplus.mapper.DsMemberMemberMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demomybatisplus.domain.DsMemberMember">
+        <id property="memberId" column="member_id" jdbcType="BINARY"
+            typeHandler="com.example.demomybatisplus.config.mp.StringBinaryTypeHandler"/>
+        <result property="userId" column="user_id" jdbcType="BINARY"
+                typeHandler="com.example.demomybatisplus.config.mp.StringBinaryTypeHandler"/>
+        <result property="orgId" column="org_id" jdbcType="BINARY"
+                typeHandler="com.example.demomybatisplus.config.mp.StringBinaryTypeHandler"/>
+        <result property="memberType" column="member_type" jdbcType="TINYINT"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="sysId" column="sys_id" jdbcType="VARCHAR"/>
+        <result property="source" column="source" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="CHAR"/>
+        <result property="region" column="region" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="openId" column="open_id" jdbcType="VARCHAR"/>
+            <result property="appId" column="app_id" jdbcType="VARCHAR"/>
+            <result property="aliPayUserId" column="ali_pay_user_id" jdbcType="VARCHAR"/>
+        <result property="memberNo" column="member_no" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"
+                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result property="employeeId" column="employee_id" jdbcType="VARCHAR"/>
+        <result property="employeeStatus" column="employee_status" jdbcType="TINYINT"/>
+        <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
+        <result property="department" column="department" jdbcType="VARCHAR"/>
+        <result property="position" column="position" jdbcType="VARCHAR"/>
+        <result property="instituteId" column="institute_id" jdbcType="VARCHAR"/>
+        <result property="instituteName" column="institute_name" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="TINYINT"/>
+        <result property="labels" column="labels" jdbcType="VARCHAR"
+                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result property="fieldValList" column="field_val_list" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="groups" column="groups" jdbcType="VARCHAR"
+                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result property="groupSyncToken" column="group_sync_token" jdbcType="CHAR"/>
+    </resultMap>
+
+    <!--<sql id="Base_Column_List">
+        member_id,member_type,status,
+        sys_id,source,name,
+        email,phone,gender,
+        region,content,open_id,
+        app_id,ali_pay_user_id,member_no,
+        address,employee_id,employee_status,
+        birthday,department,position,
+        institute_id,institute_name,age,
+        labels,field_val_list,create_time,
+        update_time,groups,group_sync_token,
+        org_id,store_id,user_id
+    </sql>-->
+</mapper>
